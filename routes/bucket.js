@@ -1,11 +1,9 @@
 const express=require('express');
-const order=express.Router();
+const bucket=express.Router();
 const mysql=require('../mysql/index.js');
 
-order.use(express.json({
+bucket.use(express.json({
     limit:'50mb'
 }));
 
-
-
-module.exports=order;
+module.exports=bucket;

@@ -8,35 +8,86 @@ customer.use(express.json({
 
 //whole search
 customer.get("/inquire/",async(req,res)=>{
-    console.log("in");
-    const customers=await mysql.query('customerList');
-    console.log(customers);
-    res.send(customers);
+    const result=await mysql.query('customerList');
+    res.send(result);
 });
 
 //login
 customer.get("/login",async(req,res)=>{
-    const customers=await mysql.query('customerData',req.body.param);
-    console.log(customers);
-    res.send(customers);
+    try{
+        const result=await mysql.query('customerData',req.body.param);
+        if(result[0]){
+            res.send(result);
+        }else{
+            res.send("User Not Exist");
+        }
+    }catch(err){
+        res.send("DB Connect Error");
+    }
 });
 
 //signUp
 customer.post("/signUp/insert",async(req,res)=>{
-    const customers=await mysql.query('addCustomer',req.body.param);
-    console.log(customers);
-    res.send(customers);
+    try{
+        await mysql.query('addCustomer',req.body.param);
+        res.send("OK");
+    }catch(err){//need to check overlap exception
+        res.send("DB Connect Error");
+    }
 });
 
 customer.get("/signUp/idCheck",async(req,res)=>{
-    const customers=await mysql.query('addCustomer',req.body.param);
-    console.log(customers);
-    res.send(customers);
+    try{
+        const result=await mysql.query('idCheck',req.body.param);
+        if(result[0]){
+            res.send("Existed User");
+        }else{
+            res.send("OK");
+            //res.status(200).send();
+        }
+    }catch(err){
+        res.send("DB Connect Error");
+    }
 });
 
-customer.get("/signUp/idCheck",async(req,res)=>{
-    const customers=await mysql.query('addCustomer',req.body.param);
-    console.log(customers);
-    res.send(customers);
+customer.get("/signUp/phoneCheck",async(req,res)=>{
+    try{
+        const result=await mysql.query('phoneCheck',req.body.param);
+        if(result[0]){
+            res.send("Existed User");
+        }else{
+            res.send("OK");
+            //res.status(200).send();
+        }
+    }catch(err){
+        res.send("DB Connect Error");
+    }
 });
+
+//revise
+customer.put("/revise",async(req,res)=>{
+    try{
+        await mysql.query('reviseCustomerr',req.body.param);
+        res.send("OK");
+    }catch(err){//need to check overlap exception
+        res.send("DB Connect Error");
+    }
+});
+
+//delete
+customer.delete("/delete",async(req,res)=>{
+    try{
+        const result=await mysql.query('findCustomer',req.body.param);
+        if(result[0]){
+            await mysql.query('deleteBucket',req.body.param);
+            await mysql.query('deleteCustomer',req.body.param);
+            res.send("OK");
+        }else{
+            res.send("User Not Exist");
+        }
+    }catch(err){
+        res.send("DB Connect Error");
+    }
+});
+
 module.exports=customer;
