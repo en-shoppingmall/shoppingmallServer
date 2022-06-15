@@ -3,10 +3,11 @@ const customerRoute=require('./routes/customer');
 const orderRoute=require('./routes/order');
 const productRoute=require('./routes/product');
 const bucketRoute=require('./routes/bucket');
+const cors=require('cors');
 const app=express();
 const session=require('express-session');
 const port=3000;
-
+app.use(cors());
 app.use(session({
     secret:'secret code',
     resave:false,
