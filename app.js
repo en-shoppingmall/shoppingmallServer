@@ -21,9 +21,8 @@ app.use(express.json({
     limit:'50mb'
 }));
 
-app.post('/',function(req,res){
-    console.log(req.body.param);
-    res.send(req.body.param);
+app.get('/',function(req,res){
+    res.send("hi");
 })
 
 app.listen(port,()=>{
