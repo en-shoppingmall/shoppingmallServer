@@ -4,8 +4,8 @@ const pool=mysql.createPool({
     connectionLimit:10,
     host:'database-1.c0ng5hzls6uq.ap-northeast-2.rds.amazonaws.com',
     port:3306,
-    user:'root',
-    password:'1234',
+    user:'admin',
+    password:'whgudwns1',
     database:'epimint'
 });
 
