@@ -14,7 +14,7 @@ module.exports={
 
     //product
     setList:"select set_name,image,price,saled_price,prod_count,default_product from epimint.set where PAGE='SET'",
-    flavorList:"select SET_NAME,PRICE,PROD_COUNT,PRODUCT_NAME as DEFAULT_PRODUCT FROM epimint.set,product where PAGE='FLAVOR' and DEFAULT_PRODUCT=PRODUCT_NUM",
+    flavorList:"select set_name,image,price,saled_price,prod_count,PRODUCT_NAME as default_product FROM epimint.set,product where PAGE='FLAVOR' and DEFAULT_PRODUCT=PRODUCT_NUM",
     productList:"select * from product"
 
 }
