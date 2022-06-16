@@ -13,7 +13,7 @@ module.exports={
     deleteCustomer:"delete from customer where CUST_NUM=?",
 
     //product
-    setList:"select SET_NAME,IMAGE,PRICE,PROD_COUNT,DEFAULT_PRODUCT as DEFAULT_PRODUCT from epimint.set where PAGE='SET'",
+    setList:"select set_name,image,price,saled_price,prod_count,default_product from epimint.set where PAGE='SET'",
     flavorList:"select SET_NAME,PRICE,PROD_COUNT,PRODUCT_NAME as DEFAULT_PRODUCT FROM epimint.set,product where PAGE='FLAVOR' and DEFAULT_PRODUCT=PRODUCT_NUM",
     productList:"select * from product"
 
