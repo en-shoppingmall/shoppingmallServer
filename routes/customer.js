@@ -17,6 +17,19 @@ customer.get("/login",async(req,res)=>{
     try{
         const result=await mysql.query('customerData',req.body.param);
         if(result[0]){
+            res.send("OK");
+        }else{
+            res.send("User Not Exist");
+        }
+    }catch(err){
+        res.send("DB Connect Error");
+    }
+});
+
+customer.get("/find/ID",async(req,res)=>{
+    try{
+        const result=await mysql.query('findID',req.body.param);
+        if(result[0]){
             res.send(result);
         }else{
             res.send("User Not Exist");
@@ -25,6 +38,20 @@ customer.get("/login",async(req,res)=>{
         res.send("DB Connect Error");
     }
 });
+
+customer.get("/find/PW",async(req,res)=>{
+    try{
+        const result=await mysql.query('findPW',req.body.param);
+        if(result[0]){
+            res.send(result);
+        }else{
+            res.send("User Not Exist");
+        }
+    }catch(err){
+        res.send("DB Connect Error");
+    }
+});
+
 
 //signUp
 customer.post("/signUp/insert",async(req,res)=>{
@@ -35,7 +62,7 @@ customer.post("/signUp/insert",async(req,res)=>{
         res.send("DB Connect Error");
     }
 });
-
+//아이디 중복확인
 customer.get("/signUp/idCheck",async(req,res)=>{
     try{
         const result=await mysql.query('idCheck',req.body.param);
@@ -49,7 +76,7 @@ customer.get("/signUp/idCheck",async(req,res)=>{
         res.send("DB Connect Error");
     }
 });
-
+//휴대폰 중복확인
 customer.get("/signUp/phoneCheck",async(req,res)=>{
     try{
         const result=await mysql.query('phoneCheck',req.body.param);
