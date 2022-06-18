@@ -18,6 +18,10 @@ customer.get("/login",async(req,res)=>{
         const result=await mysql.query('customerData',req.body.param);
         if(result[0]){
             res.send("OK");
+            result.ID
+            /*
+
+            */
         }else{
             res.send("User Not Exist");
         }
