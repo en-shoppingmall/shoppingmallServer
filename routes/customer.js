@@ -8,12 +8,14 @@ customer.use(express.json({
 
 //whole search
 customer.get("/inquire/",async(req,res)=>{
+    console.log(req.body);
     const result=await mysql.query('customerList');
     res.send(result);
 });
 
 //login
 customer.get("/login",async(req,res)=>{
+    console.log(req.body);
     try{
         const result=await mysql.query('customerData',req.body.param);
         if(result[0]){
@@ -45,6 +47,7 @@ customer.get("/find/ID",async(req,res)=>{
 });
 
 customer.get("/find/PW",async(req,res)=>{
+    console.log(req.body);
     try{
         const result=await mysql.query('findPW',req.body.param);
         if(result[0]){
@@ -60,6 +63,7 @@ customer.get("/find/PW",async(req,res)=>{
 
 //signUp
 customer.post("/signUp/insert",async(req,res)=>{
+    console.log(req.body);
     try{
         await mysql.query('addCustomer',req.body.param);
         //res.status(200).send();
@@ -71,6 +75,7 @@ customer.post("/signUp/insert",async(req,res)=>{
 });
 //아이디 중복확인
 customer.get("/signUp/idCheck",async(req,res)=>{
+    console.log(req.body);
     try{
         const result=await mysql.query('idCheck',req.body.param);
         if(result[0]){
@@ -85,6 +90,7 @@ customer.get("/signUp/idCheck",async(req,res)=>{
 });
 //휴대폰 중복확인
 customer.get("/signUp/phoneCheck",async(req,res)=>{
+    console.log(req.body);
     try{
         const result=await mysql.query('phoneCheck',req.body.param);
         if(result[0]){
@@ -100,6 +106,7 @@ customer.get("/signUp/phoneCheck",async(req,res)=>{
 
 //revise
 customer.put("/revise",async(req,res)=>{
+    console.log(req.body);
     try{
         await mysql.query('reviseCustomerr',req.body.param);
         res.send("OK");
@@ -110,6 +117,7 @@ customer.put("/revise",async(req,res)=>{
 
 //delete
 customer.delete("/delete",async(req,res)=>{
+    console.log(req.body);
     try{
         const result=await mysql.query('findCustomer',req.body.param);
         if(result[0]){
