@@ -59,11 +59,13 @@ customer.get("/find/PW",async(req,res)=>{
 
 //signUp
 customer.post("/signUp/insert",async(req,res)=>{
-    console.log(req);
+    console.log
     try{
         await mysql.query('addCustomer',req.body.param);
+        //res.status(200).send();
         res.send("OK");
     }catch(err){//need to check overlap exception
+        //res.status(400).send();
         res.send("DB Connect Error");
     }
 });

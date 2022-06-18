@@ -51,6 +51,7 @@ product.get("/flavor/Detail",async(req,res)=>{
             res.send(result);
         }
     }catch(err){
+        console.log(err);
         res.send("DB Connect Error");
     }
 });

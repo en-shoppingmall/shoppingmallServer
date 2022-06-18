@@ -3,7 +3,7 @@ module.exports={
     //login
     customerData: 'select * from customer where ID= ? and PW=?',
     findID: 'select ID from customer where NAME= ? and EMAIL=?',
-    findPW: 'select PW from customer where NAME= ? and ID=? and EMAIL=?',
+    findPW: 'select PW from customer where ID=? and EMAIL=?',
     //signUp
     addCustomer:"insert into customer set ?",
     idCheck:"select CUST_NUM from customer where ID=?",
