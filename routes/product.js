@@ -42,7 +42,7 @@ product.get("/set/Detail",async(req,res)=>{
     }
 });
 //flavor메뉴 공통 이미지
-product.get("/flavor/Detail",async(req,res)=>{
+product.post("/flavor/Detail",async(req,res)=>{
     try{
         const result=await mysql.query('flavorDetail',req.body.param);
         if(!result[0]){
