@@ -14,16 +14,12 @@ customer.get("/inquire/",async(req,res)=>{
 });
 
 //login
-customer.get("/login",async(req,res)=>{
+customer.post("/login",async(req,res)=>{
     console.log(req.body);
     try{
         const result=await mysql.query('customerData',req.body.param);
         if(result[0]){
             res.send("OK");
-            result.ID
-            /*
-
-            */
         }else{
             res.send("User Not Exist");
         }
@@ -46,7 +42,7 @@ customer.post("/find/ID",async(req,res)=>{
     }
 });
 
-customer.get("/find/PW",async(req,res)=>{
+customer.post("/find/PW",async(req,res)=>{
     console.log(req.body);
     try{
         const result=await mysql.query('findPW',req.body.param);
