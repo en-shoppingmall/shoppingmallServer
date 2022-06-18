@@ -32,7 +32,7 @@ customer.get("/login",async(req,res)=>{
     }
 });
 
-customer.get("/find/ID",async(req,res)=>{
+customer.post("/find/ID",async(req,res)=>{
     console.log(req.body);
     try{
         const result=await mysql.query('findID',req.body.param);
