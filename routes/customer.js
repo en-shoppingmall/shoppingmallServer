@@ -31,7 +31,7 @@ customer.get("/login",async(req,res)=>{
 });
 
 customer.get("/find/ID",async(req,res)=>{
-    console.log(res);
+    console.log(req.body);
     try{
         const result=await mysql.query('findID',req.body.param);
         if(result[0]){
@@ -60,7 +60,6 @@ customer.get("/find/PW",async(req,res)=>{
 
 //signUp
 customer.post("/signUp/insert",async(req,res)=>{
-    console.log
     try{
         await mysql.query('addCustomer',req.body.param);
         //res.status(200).send();
