@@ -31,6 +31,7 @@ customer.get("/login",async(req,res)=>{
 });
 
 customer.get("/find/ID",async(req,res)=>{
+    console.log(res);
     try{
         const result=await mysql.query('findID',req.body.param);
         if(result[0]){
