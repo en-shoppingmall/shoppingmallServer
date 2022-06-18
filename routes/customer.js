@@ -59,6 +59,7 @@ customer.get("/find/PW",async(req,res)=>{
 
 //signUp
 customer.post("/signUp/insert",async(req,res)=>{
+    console.log(req);
     try{
         await mysql.query('addCustomer',req.body.param);
         res.send("OK");
