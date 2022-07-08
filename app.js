@@ -23,7 +23,7 @@ app.use(express.json({
 }));
 
 app.get('/',function(req,res){
-    res.sendFile(__dirname+"/address.html")
+    res.sendFile(__dirname+"/daum_address.html")
 })
 
 app.listen(port,()=>{
