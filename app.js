@@ -23,7 +23,7 @@ app.use(express.json({
 }));
 
 app.get('/',function(req,res){
-    res.send("hi");
+    res.sendFile(__dirname+"/address.html")
 })
 
 app.listen(port,()=>{
